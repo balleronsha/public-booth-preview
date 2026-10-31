@@ -1,0 +1,33 @@
+/* PUBLIC BOOTH — LOGO SIZE FIX */
+
+header.header a.logo {
+  display: flex !important;
+  align-items: center !important;
+
+  width: 12vw !important;
+  max-width: 12vw !important;
+  height: auto !important;
+
+  flex: 0 0 12vw !important;
+}
+
+header.header a.logo img.logo-image {
+  display: block !important;
+
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  max-height: none !important;
+
+  object-fit: contain !important;
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+  header.header a.logo {
+    width: 30vw !important;
+    max-width: 30vw !important;
+    flex-basis: 30vw !important;
+  }
+}

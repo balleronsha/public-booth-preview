@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Public Booth — фотобудки по всему миру</title>
+
+    <meta
+      name="description"
+      content="Интерактивная карта фотобудок Public Booth по всему миру."
+    />
+
+    <meta name="theme-color" content="#FFB700" />
+
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.css"
+    />
+
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/map.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+    <link rel="stylesheet" href="css/mobile.css" />
+  </head>
+
+  <body>
+    <header class="header">
+      <a href="/" class="logo" aria-label="Public Booth — главная">
+        <img
+          src="assets/images/public-booth-logo.svg"
+          alt="Public Booth"
+          class="logo-image"
+        />
+      </a>
+
+      <nav class="navigation">
+        <button
+          class="nav-button"
+          id="searchToggle"
+          type="button"
+          data-i18n="find"
+        >
+          НАЙТИ ФОТОБУДКУ
+        </button>
+
+        <button
+          class="language-button"
+          id="languageToggle"
+          type="button"
+          aria-label="Switch to English"
+        >
+          RU
+        </button>
+      </nav>
+    </header>
+
+    <main class="main">
+      <section class="map-section" aria-label="Карта фотобудок Public Booth">
+        <div id="map" class="map"></div>
+
+        <div class="map-heading">
+          <h1 data-i18n="hero">
+            ВЕСЬ МИР —<br />
+            ТВОЯ ФОТОБУДКА.
+          </h1>
+        </div>
+
+        <div class="map-controls">
+          <button
+            id="zoomIn"
+            type="button"
+            aria-label="Приблизить карту"
+            data-i18n-aria="zoomIn"
+          >
+            +
+          </button>
+
+          <button
+            id="zoomOut"
+            type="button"
+            aria-label="Отдалить карту"
+            data-i18n-aria="zoomOut"
+          >
+            −
+          </button>
+
+          <button
+            id="locateMe"
+            type="button"
+            aria-label="Моё местоположение"
+            data-i18n-aria="locate"
+          >
+            ◎
+          </button>
+        </div>
+
+        <div class="map-footer">
+          <span data-i18n="footer"> НАЙДИ СВОЮ ФОТОБУДКУ </span>
+
+          <span id="boothCount"> ЗАГРУЗКА... </span>
+        </div>
+      </section>
+    </main>
+
+    <aside class="search-panel" id="searchPanel" hidden>
+      <div class="search-header">
+        <h2 data-i18n="find">НАЙТИ ФОТОБУДКУ</h2>
+
+        <button
+          id="closeSearch"
+          type="button"
+          aria-label="Закрыть поиск"
+          data-i18n-aria="closeSearch"
+        >
+          ×
+        </button>
+      </div>
+
+      <input
+        type="search"
+        id="searchInput"
+        placeholder="ГОРОД ИЛИ НАЗВАНИЕ"
+        data-i18n-placeholder="searchPlaceholder"
+        autocomplete="off"
+        aria-label="Поиск фотобудки"
+        data-i18n-aria="searchLabel"
+      />
+
+      <div id="searchResults"></div>
+    </aside>
+
+    <aside class="booth-card" id="boothCard" hidden>
+      <button
+        id="closeBoothCard"
+        type="button"
+        aria-label="Закрыть карточку"
+        data-i18n-aria="closeCard"
+      >
+        ×
+      </button>
+
+      <div id="boothCardContent"></div>
+    </aside>
+
+    <script src="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.js"></script>
+    <script src="js/locations.js"></script>
+    <script src="js/lang.js"></script>
+    <script src="js/map.js"></script>
+  </body>
+</html>
