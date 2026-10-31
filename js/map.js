@@ -1387,11 +1387,92 @@
      LOAD MAP
      ========================================== */
 
+  /* ==========================================
+   EARLY ROADS — FROM ZOOM 5
+   ========================================== */
+
+  function addEarlyRoads() {
+    const layers = map.getStyle().layers;
+
+    // Используем тот же источник, что и
+    // существующие дороги OpenFreeMap.
+    const roadLayer = layers.find(
+      (layer) => layer['source-layer'] === 'transportation' && layer.source,
+    );
+
+    if (!roadLayer) {
+      console.warn('Road source not found');
+      return;
+    }
+
+    if (map.getLayer('pb-early-roads')) return;
+
+    // Начинаем показывать магистрали
+    // ещё на региональном масштабе.
+    map.addLayer({
+      id: 'pb-early-roads',
+      type: 'line',
+      source: roadLayer.source,
+      'source-layer': 'transportation',
+
+      minzoom: 1,
+      maxzoom: 11,
+
+      filter: [
+        'in',
+        ['get', 'class'],
+        ['literal', ['motorway', 'trunk', 'primary', 'secondary']],
+      ],
+
+      layout: {
+        'line-cap': 'round',
+        'line-join': 'round',
+      },
+
+      paint: {
+        'line-color': '#C4BBAE',
+        'line-opacity': [
+          'interpolate',
+          ['linear'],
+          ['zoom'],
+          5,
+          0.3,
+          8,
+          0.55,
+          11,
+          0.65,
+        ],
+
+        'line-width': [
+          'interpolate',
+          ['linear'],
+          ['zoom'],
+          5,
+          0.25,
+          7,
+          0.4,
+          9,
+          0.55,
+          11,
+          0.7,
+        ],
+      },
+    });
+
+    console.log('Early roads added');
+  }
+
   let mapReady = false;
 
   map.on('load', () => {
     try {
       styleBaseMap();
+      addEarlyRoads();
+      // Показываем только оформленную карту
+
+      map.once('idle', () => {
+        map.getContainer().classList.add('pb-map-ready');
+      });
 
       addCitySource();
       addBuildingLayers();

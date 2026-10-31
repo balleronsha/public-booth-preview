@@ -385,3 +385,20 @@
     font-size: 10px;
   }
 }
+
+/* С самого начала показываем фирменный фон */
+
+#map {
+  background-color: #ffb700 !important;
+}
+
+/* Карта скрыта до применения фирменных цветов */
+#map .maplibregl-canvas {
+  opacity: 0 !important;
+}
+
+/* Плавно показываем уже перекрашенную карту */
+#map.pb-map-ready .maplibregl-canvas {
+  opacity: 1 !important;
+  transition: opacity 0.15s ease;
+}
