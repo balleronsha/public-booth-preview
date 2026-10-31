@@ -11,7 +11,7 @@
      ========================================== */
 
   const C = {
-    // yellow: '#FFB700',
+    yellow: '#FFB700',
     land: '#FFF9EB',
     black: '#141212',
     border: '#D5CCBC',
