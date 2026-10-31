@@ -336,3 +336,52 @@
     transition: none;
   }
 }
+
+/* ==========================================
+   PUBLIC BOOTH — WORLD NAVIGATION
+   ========================================== */
+
+.pb-back-world {
+  position: absolute;
+  top: 104px;
+  left: 40px;
+  z-index: 30;
+
+  padding: 13px 19px;
+
+  background: #ffb700;
+  color: #141212;
+
+  border: 2px solid #141212;
+  border-radius: 0;
+
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.pb-back-world:hover {
+  background: #ffd04a;
+  transform: translateY(-2px);
+}
+
+.pb-back-world[hidden] {
+  display: none !important;
+}
+
+@media (max-width: 700px) {
+  .pb-back-world {
+    top: 82px;
+    left: 15px;
+
+    padding: 11px 13px;
+    font-size: 10px;
+  }
+}
